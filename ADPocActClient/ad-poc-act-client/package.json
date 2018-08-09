@@ -1,0 +1,21 @@
+{
+  "name": "ad-poc-act-client",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.4.2",
+    "react-adal": "^0.4.18",
+    "react-dom": "^16.4.2",
+    "react-redux": "^5.0.7",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "start": "cross-env PORT=8081 && react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0"
+  }
+}
