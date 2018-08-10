@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<head>
+  <title>Hello ADAL</title>
+</head>
+<body>
+  <h1 id="hello">Hello, world!</h1>
+
+  <a href="#" onclick="authContext.login(); return false;">Log in</a>
+  <a href="#" onclick="authContext.logOut(); return false;">Log out</a>
+
+
+  <p id="username"></p>
+  <pre id="api_response"></pre>
+
+  <script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.17/js/adal.min.js"></script>
+  <script src="app.js"></script>
+</body>
