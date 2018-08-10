@@ -1,17 +1,21 @@
-﻿using System.Web.Http;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web.Http;
 using System.Security.Claims;
 
 namespace ADPocAct.Controllers
 {
-    [Authorize]
     [RoutePrefix("")]
     public class HelloController : ApiController
     {
         [Route("")]
-        public string GetHelloWorld()
+        [Authorize]
+        public IEnumerable<string> GetHelloWorld() => new[]
         {
-            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.Name).Value;
-            return $"Hello {owner}";
-        }
+            $"Hello {ClaimsPrincipal.Current.FindFirst("name")?.Value}"
+        }.Concat(ClaimsPrincipal.Current.Claims.Select(c => $"{c.Value} ({c.Type})"));
+
+        [Route("anon")]
+        public IEnumerable<string> GetAnonymouseHello() => new[] {$"Hello, {ClaimsPrincipal.Current?.FindFirst("name")?.Value ?? "anon"}!"};
     }
 }
